@@ -2,6 +2,8 @@
 <html>
   <head>
 <link rel="stylesheet" href="styles.css">
+	  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
     <title>Ammar Nakhleh</title>
   </head>
   <body>
@@ -12,12 +14,14 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="#1">Videos</a></li>
           <li><a href="https://sites.google.com/view/ammar-nakhleh/">About</a></li>
+		<button id="LightMode" class="lightbtn"> Light Mode</button>
+	<button id="nightMode" class="nightbtn">Dark Mode</button>
         </ul>
       </nav>
     </header>
     
     <main>
-	    <label class="switch">
+<!-- 	    <label class="switch">
 	<input class="switch__input" type="checkbox" role="switch">
 	<svg class="switch__icon switch__icon--light" viewBox="0 0 12 12" width="12px" height="12px" aria-hidden="true">
 		<g fill="none" stroke="#fff" stroke-width="1" stroke-linecap="round">
@@ -40,7 +44,7 @@
 		</g>	
 	</svg>
 	<span class="switch__sr">Dark Mode</span>
-</label>
+</label> -->
       <h2 id="1">Featured Video</h2>
      
        <iframe width="560" height="315" src="https://www.youtube.com/embed/bE6h07bufAU" title="YouTube video player" 
@@ -131,5 +135,24 @@
       <div class="i2gjFc Mi644 j2p0Pb zjopje"><a href="https://www.youtube.com/channel/UChdK9LTfZH78GpW2Rp3TMDw" target="_blank" class="RNpQXe" style="width: 32px;height: 32px;margin: 6px;"><img src="https://lh5.googleusercontent.com/cVeVGOr-QATor5enrCPm1kFSvEHSwjneoVXVxB1fw8DiDMgAziB7QQssH9O4PUUbVMeviNMSznxWiqt80QRWiykCaFw-dWbuPcbQ4HvGlp4" alt="YouTube" class="xbGufb" style="width: 32px; height: 32px;" width="32" height="32"></a><a href="https://www.google.com/url?q=https%3A%2F%2Fwww.tiktok.com%2F%40ammarnakhleh1&amp;sa=D&amp;sntz=1&amp;usg=AOvVaw0c68pGn3L5ba5p3Zn_H78e" target="_blank" class="RNpQXe" style="width: 32px;height: 32px;margin: 6px;"><img src="https://lh4.googleusercontent.com/gSN9X0duVbjf43EyYp1DxsENhwr4MApwy9sX5iIyqhU73uOroEYqDkCSYgv0_Qtcy8ekxoLwLiyhOqX3lDGAgEKVp2wnp6-DWB7nmQfRsdU" alt="TikTok" class="xbGufb" style="width: 32px; height: 32px;" width="32" height="32"></a><a href="https://www.google.com/url?q=https%3A%2F%2Fwww.instagram.com%2Fammar_nakhleh%2F&amp;sa=D&amp;sntz=1&amp;usg=AOvVaw1peeKKWlBzasNK_cDh-pz6" target="_blank" class="RNpQXe" style="width: 32px;height: 32px;margin: 6px;"><img src="https://lh4.googleusercontent.com/ZD04tSUciUxVp8-Stli51NtWqCto4ADzXwBFx4vxEwl0kog118Ubacj9KPshQnEnRt1-ykxTKUHjnqEbt6LN5traMkyMvtx5tHBUnCzQpco" alt="Instagram" class="xbGufb" style="width: 32px; height: 32px;" width="32" height="32"></a>
       </div>
     </footer>
+	  <script>
+
+
+		$(document).ready(function(){
+			$('#nightMode').click(function(){
+				$('body').removeClass('LightMode');
+				$('body').addClass('nightMode');
+
+				});
+			$('#LightMode').click(function(){
+				$('body').removeClass('nightMode');
+				$('body').addClass('LightMode');
+
+				});
+
+		});
+		
+
+	</script>
   </body>
 </html>
