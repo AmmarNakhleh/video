@@ -30,6 +30,18 @@ nav a:hover {
   background-color: #ddd;
   color: black;
 }
+/*night*/
+.nightMode{
+	background-color: black;
+	color: white;
+}
+.LightMode{
+	background-color: white;
+	color: black;
+}
+.nightbtn{padding: 10px;background-color: black; color: white;}
+
+.lightbtn{padding: 10px;background-color: yellow;}
 
 /* Style the main section */
 main {
