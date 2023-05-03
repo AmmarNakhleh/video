@@ -67,7 +67,7 @@ svg{
 	--trans-timing-out: cubic-bezier(0.05,0.76,0.06,0.86);
 	font-size: calc(40px + (80 - 40) * (100vw - 320px) / (2560 - 320));
 }
-body,
+/* body,
 input {
 	color: var(--fg);
 	font: 1em/1.5 sans-serif;
@@ -83,7 +83,7 @@ body {
 body:has(.switch__input:checked) {
 	background-color: var(--fg);
 	color: var(--bg);
-}
+} */
 .switch {
 	margin: auto;
 	position: relative;
