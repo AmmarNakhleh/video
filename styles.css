@@ -1,6 +1,6 @@
 ﻿/* Style the header */
 header {
-  background-color: #333;
+  background-color: #00BFFF;
   color: white;
   padding: 20px;
 }
@@ -45,6 +45,15 @@ video {
   max-width: 100%;
   height: auto;
   margin-bottom: 20px;
+}
+svg{
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	height:200px;
+	width: 200px;
+/* 	border:2px solid red; */
 }
 
 /* Style the footer */
