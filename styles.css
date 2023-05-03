@@ -59,7 +59,7 @@ video {
   height: auto;
   margin-bottom: 20px;
 }
-svg{
+/* svg{
 	position:absolute;
 	top:50%;
 	left:50%;
@@ -67,7 +67,7 @@ svg{
 	height:200px;
 	width: 200px;
 /* 	border:2px solid red; */
-}
+} */
 /* :root {
 	--hue: 223;
 	--bg: hsl(var(--hue),10%,90%);
