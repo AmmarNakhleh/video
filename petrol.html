@@ -1,1 +1,73 @@
 
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculate Sum from List</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+      select {
+        width: 150px;
+        height: 120px;
+      }
+      button {
+        margin-top: 10px;
+      }
+      p {
+        font-weight: bold;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+   <label for="num1">price</label>
+    <input type="number" id="num1" /><br />
+    <label for="numbers">Price per liter:</label>
+    <select id="numbers" multiple>
+      90<option value="0.900">90</option>
+      95<option value="0.1185">95</option>
+      
+    </select>
+    <label for="num2">count klmeter</label>
+    <input type="number" id="num2" /><br />
+    
+    
+    <button onclick="calculateSum()">Calculate Sum</button>
+    
+    
+    <p id="result"></p>
+    
+    <script>
+      function calculateSum() {
+      
+         // Get the values from the input fields
+        var num1 = parseFloat(document.getElementById("num1").value);
+        var num2 = parseFloat(document.getElementById("num2").value);
+      
+        // Calculate the sum
+       // var sum = num1 + num2;
+        
+        // Display the result
+        
+        var selectElement = document.getElementById("numbers");
+        var selectedOptions = selectElement.selectedOptions;
+        var petrol_ltr = 0;
+        
+        // Loop through the selected options and calculate the sum
+        for (var i = 0; i < selectedOptions.length; i++) {
+          var value = parseFloat(selectedOptions[i].value);
+          petrol_ltr= num1/value; 
+          Consumption_rate_per_tank=(petrol_ltr/num2)*20
+        }
+        
+        // Display the result
+        document.getElementById("result").innerHTML = "petrol_ltr "+petrol_ltr+"Consumption_rate_per_tank "+Consumption_rate_per_tank;
+      }
+    </script>
+  </body>
+</html>
