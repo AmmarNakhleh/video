@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>عرض الفيديوهات المخزنة</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 30px;
+    }
+    .video-frame {
+        margin: 10px 0;
+        width: 560px;
+        height: 315px;
+        border: none;
+    }
+    .video-item {
+        margin-bottom: 20px;
+    }
+</style>
+</head>
+<body>
+
+<h1>الفيديوهات المخزنة</h1>
+
+<div id="videoContainer"></div>
+
+<script>
+    const videoContainer = document.getElementById("videoContainer");
+
+    // تحميل الفيديوهات من Local Storage
+    const videos = JSON.parse(localStorage.getItem("videos")) || [];
+
+    function renderVideos() {
+        videoContainer.innerHTML = "";
+        videos.forEach(videoId => {
+            const div = document.createElement("div");
+            div.className = "video-item";
+
+            const iframe = document.createElement("iframe");
+            iframe.className = "video-frame";
+            iframe.src = `https://www.youtube.com/embed/${videoId}`;
+
+            div.appendChild(iframe);
+            videoContainer.appendChild(div);
+        });
+    }
+
+    renderVideos();
+</script>
+
+</body>
+</html>
