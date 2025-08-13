@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>قائمة الفيديوهات المتقدمة</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 30px;
+    }
+    input, button {
+        padding: 10px;
+        margin: 5px;
+        font-size: 16px;
+    }
+    .video-frame {
+        margin: 10px 0;
+        width: 560px;
+        height: 315px;
+        border: none;
+    }
+    .video-item {
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        display: inline-block;
+        cursor: grab;
+        background: #f9f9f9;
+    }
+</style>
+</head>
+<body>
+
+<h1>قائمة الفيديوهات المتقدمة</h1>
+
+<input type="text" id="videoURL" placeholder="ضع رابط الفيديو من يوتيوب">
+<button id="addVideo">إضافة فيديو</button>
+<br>
+<input type="text" id="searchVideo" placeholder="بحث عن فيديو...">
+
+<div id="videoContainer"></div>
+
+<script>
+const addVideoBtn = document.getElementById("addVideo");
+const videoURLInput = document.getElementById("videoURL");
+const videoContainer = document.getElementById("videoContainer");
+const searchInput = document.getElementById("searchVideo");
+
+// تحميل الفيديوهات من localStorage
+let videos = JSON.parse(localStorage.getItem("videos")) || [];
+
+// دالة عرض الفيديوهات
+function renderVideos(filter="") {
+    videoContainer.innerHTML = "";
+    videos.forEach((videoId, index) => {
+        if(videoId.includes(filter)) {
+            const div = document.createElement("div");
+            div.className = "video-item";
+            div.draggable = true;
+            div.dataset.index = index;
+
+            const iframe = document.createElement("iframe");
+            iframe.className = "video-frame";
+            iframe.src = `https://www.youtube.com/embed/${videoId}`;
+
+            const delBtn = document.createElement("button");
+            delBtn.textContent = "حذف الفيديو";
+            delBtn.addEventListener("click", function() {
+                videos.splice(index, 1);
+                localStorage.setItem("videos", JSON.stringify(videos));
+                renderVideos(searchInput.value.trim());
+            });
+
+            // السحب والإفلات
+            div.addEventListener("dragstart", e => {
+                e.dataTransfer.setData("text/plain", index);
+            });
+            div.addEventListener("dragover", e => e.preventDefault());
+            div.addEventListener("drop", e => {
+                e.preventDefault();
+                const draggedIndex = e.dataTransfer.getData("text/plain");
+                const targetIndex = index;
+                // تبديل العناصر
+                [videos[draggedIndex], videos[targetIndex]] = [videos[targetIndex], videos[draggedIndex]];
+                localStorage.setItem("videos", JSON.stringify(videos));
+                renderVideos(searchInput.value.trim());
+            });
+
+            div.appendChild(iframe);
+            div.appendChild(delBtn);
+            videoContainer.appendChild(div);
+        }
+    });
+}
+
+renderVideos();
+
+// إضافة فيديو جديد
+addVideoBtn.addEventListener("click", function() {
+    const url = videoURLInput.value.trim();
+    let videoId = "";
+
+    if(url.includes("watch?v=")) {
+        videoId = url.split("watch?v=")[1].split("&")[0];
+    } else if(url.includes("youtu.be/")) {
+        videoId = url.split("youtu.be/")[1].split("?")[0];
+    }
+
+    if(videoId) {
+        videos.push(videoId);
+        localStorage.setItem("videos", JSON.stringify(videos));
+        renderVideos(searchInput.value.trim());
+        videoURLInput.value = "";
+    } else {
+        alert("الرابط غير صحيح");
+    }
+});
+
+// البحث داخل الفيديوهات
+searchInput.addEventListener("input", function() {
+    const filter = searchInput.value.trim();
+    renderVideos(filter);
+});
+</script>
+
+</body>
+</html>
